@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(190, 185, 185);
+        }
+
+        div.scroll {
+            height: 1500px;
+        }
+
+        .navbar {
+            background-color: white;
+            height: 63px;
+            margin-bottom: 10px;
+        }
+
+        .navbar>ul>li>a {
+            text-decoration: none;
+
+        }
+
+        .navbar>ul>li {
+            float: left;
+            list-style: none;
+            padding: 20px;
+        }
+
+        .navbar>ul>li:hover {
+            background: rgba(128, 128, 128, 0.329);
+            border-bottom: 5px solid rgb(155, 4, 4);
+        }
+
+        .navbar.fix-top {
+            position: fixed;
+top: 0;
+        }
+        .box{
+            height: 300px;
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .min{
+            height: 100px;
+        }
+        button{
+            background: green;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                let topnav = $(document).scrollTop();
+                if (topnav >= 250) {
+                    $(".navbar").addClass("fix-top");
+                } else {
+                    $(".navbar").removeClass("fix-top");
+                }
+            });
+            let counter=0;
+            setInterval(function(){
+$("#counterArea").html(counter++);
+            },1000)
+        })
+    </script>
+</head>
+
+<body>
+    <img src="img.png" alt="tree">
+    <img src="848368400-parsnaz-com.jpg" alt="">
+    <img src="1928519721-parsnaz-com.jpg" alt="">
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">A</a></li>
+            <li><a href="#">B</a></li>
+            <li><a href="#">C</a></li>
+            <li><a href="#">D</a></li>
+        </ul>
+    </nav>
+ <!-- <div class="scroll"></div> -->
+ <div class="box" id="counterArea"></div>
+ <div class="box min">
+     <button type="button">start</button>
+ </div>
+</body>
+
+</html>
