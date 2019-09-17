@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+    <style>
+        small {
+            display: none;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $(".input-form").each(function () {
+                    let creatE = document.createElement("small");
+                    let node = document.createTextNode("must be filled");
+                    let c = $(".control").data("length");
+                    let v = $(this).children(".control").val();
+                    if (v == "") {
+                        $(this).append(node);
+                    }
+                    else if (v.length < c && v != "") {
+                        $(this).children("p").append("the length must be more than" + c)
+                    }
+                });
+
+
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="input-form">
+        <input type="text" class="control" data-length="8">
+
+        <p></p>
+    </div>
+    <div class="input-form">
+        <input type="text" class="control" data-length="5">
+
+        <p></p>
+    </div>
+    <div class="input-form">
+        <input type="text" class="control" data-length="2">
+
+        <p></p>
+    </div>
+    <div class="input-form">
+        <input type="text" class="control" data-length="7">
+
+        <p></p>
+    </div>
+    <button type="button">start</button>
+</body>
+
+</html>
