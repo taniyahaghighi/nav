@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+        }
+
+        .left,
+        .right {
+            border: 2px solid grey;
+            background: rgba(211, 210, 210, 0.685);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        button {
+            outline: none;
+            border: none;
+            background-color: grey;
+            padding: 10px;
+        }
+
+        .modal {
+            border: 2px solid rosybrown;
+            background: rosybrown;
+            background-color: rgba(188, 143, 143, 0.329);
+            margin: 0 auto;
+            max-width: 500px;
+            display: none;
+
+
+        }
+        input{
+            width: 100%;
+            height: 20px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        $(function () {
+            let uname = $("#uname");
+            let psw = $("#psw");
+            let name = $("#name");
+            let family = $("#family");
+            let length = $("input").data("length");
+            $("#login").click(function () {
+                try {
+                    if (uname.val() == "" && psw.val() != "") throw "please fill the username box!"
+                    if (psw.val() == "" && uname.val() != "") throw "fill the password box"
+                    if (uname.val() == "" || psw.val() == "") throw "fill the boxes!"
+                    if (uname.val() == "admingugul" && psw.val() == "password") throw "welcome!"
+                    if(uname.val()!="" && psw.val()!="" && uname.val()!= "admingugul" && psw.val()!="password") throw "username or password are not correct"
+                    if (uname.val().length < length || psw.val().length < length)
+                        throw "password or username is not enough!"
+                } catch (error) {
+                    $(".left").children("small").html(error)
+                }
+            });
+            $("#register").click(function () {
+                try {
+                    if (name.val() == "" && family.val() != "") throw "please fill the name box"
+                    if (family.val() == "" && name.val() != "") throw "please fill the family box!"
+                    if (family.val() == "" && name.val() == "") throw "please fill the boxes!"
+                    if (name.val() == "farshid" && family.val() == "mehrtash") {
+                        $(".modal").css("display", "block");
+                        $(".modal").children(".name").html("name is :"+name.val());
+                        $(".modal").children(".family").html("family name is: "+family.val());
+                    }
+                    if (name.val().length < length || family.val().length < length)
+                        throw "name or family name is not enough!"
+                        if(name.val()!="" && family.val()!="" && name.val()!="farshid" && family.val()!="mehrtash") throw "name or family name are not correct!"
+                } catch (err) {
+                    $(".right").children("small").html(err)
+                }
+            });
+$(".alert").click(function(){
+    alert("saved")
+})
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <label for="">add your username:</label><br>
+            <input type="text" name="uname" id="uname" data-length="7"><br>
+            <label for="">add your password:</label><br>
+            <input type="password" name="psw" id="psw" data-length="6"><br>
+            <button type="button" id="login">login</button><br>
+            <small></small>
+        </div>
+        <div class="right">
+            <label for="">add your name:</label><br>
+            <input type="text" name="name" id="name" data-length="5"><br>
+            <label for="">add your family name:</label><br>
+            <input type="text" name="family" id="family" data-length="3"><br>
+            <button type="button" id="register">Register</button><br>
+            <small></small>
+        </div>
+
+    </div>
+    <div class="modal">
+      <small class="name"></small><br>
+      <small class="family"></small><br>
+        <button type="button" class="alert">save</button>
+    </div>
+</body>
+
+</html>
