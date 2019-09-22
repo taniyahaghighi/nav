@@ -1,0 +1,26 @@
+:root{
+--height1:230px;
+--width:100%;
+--grey:rgba(211, 209, 209, 0.719);
+--height3:360px;
+--pink: rgb(241, 191, 191);
+--padding:20px;
+--height2:160px;
+}
+
+.box{
+    height: var(--height1);
+    width: var(--width);
+    padding: var(--padding);
+}
+.grey{
+    background-color: var(--grey);
+    height: var(--height3);
+  
+}
+img{
+    height: var(--height2);
+}
+.pink{
+    background: var(--pink);
+}
